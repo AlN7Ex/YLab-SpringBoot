@@ -1,34 +1,45 @@
 package com.edu.ulab.app.service.impl;
 
+import com.edu.ulab.app.dao.UserDao;
 import com.edu.ulab.app.dto.UserDto;
 import com.edu.ulab.app.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
 public class UserServiceImpl implements UserService {
-    @Override
-    public UserDto createUser(UserDto userDto) {
-        // сгенерировать идентификатор
-        // создать пользователя
-        // вернуть сохраненного пользователя со всеми необходимыми полями id
-        userDto.setId(1L);
-        return userDto;
+
+    private final UserDao userDao;
+
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     @Override
-    public UserDto updateUser(UserDto userDto) {
-        return null;
+    public UserDto createUser(UserDto userDto) {
+        userDao.saveUser(userDto); // создать пользователя
+        return userDto; // вернуть сохраненного пользователя со всеми необходимыми полями id
+    }
+
+    public List<UserDto> getAll() {
+        return userDao.getAllUser();
+    }
+
+    @Override
+    public UserDto updateUser(Long id, UserDto userDto) {
+        return userDao.updateUser(id, userDto);
     }
 
     @Override
     public UserDto getUserById(Long id) {
-        return null;
+        return userDao.getUserById(id);
     }
 
     @Override
     public void deleteUserById(Long id) {
-
+        userDao.deleteUser(id);
     }
 }
