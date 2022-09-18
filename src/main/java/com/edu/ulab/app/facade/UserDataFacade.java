@@ -57,11 +57,6 @@ public class UserDataFacade {
 
         return UserBookResponse.builder()
                 .userId(createdUser.getId())
-//                .booksIdList(bookService.getAllBooks().stream()
-//                        .peek(bookDto -> bookDto.setUserId(createdUser.getId()))
-//                        .filter(bookDto ->bookDto.getUserId().equals(createdUser.getId()))
-//                        .map(bookMapper::bookDtoToBookRequest)
-//                        .toList())
                 .booksIdList(bookIdList)
                 .build();
     }

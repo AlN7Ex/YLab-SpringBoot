@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public class UserDao {
 
-    private static Long PEOPLE_COUNT = 0L;
+    private static Long PEOPLE_COUNT = 0L; // сгенерировать идентификатор
     private final Storage storage;
 
     public UserDao(Storage storage) {

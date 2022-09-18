@@ -20,11 +20,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto createUser(UserDto userDto) {
-        userDao.saveUser(userDto);
-        // сгенерировать идентификатор
-        // создать пользователя
-        // вернуть сохраненного пользователя со всеми необходимыми полями id
-        return userDto;
+        userDao.saveUser(userDto); // создать пользователя
+        return userDto; // вернуть сохраненного пользователя со всеми необходимыми полями id
     }
 
     public List<UserDto> getAll() {
